@@ -21,30 +21,51 @@ namespace dllFileMaker
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public static Dictionary<string, string> VariableList;
+
         public MainWindow()
         {
             InitializeComponent();
+            VariableList = new Dictionary<string, string>();
+
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (TypeComboBox.SelectedItem != null && !string.IsNullOrWhiteSpace(VariableNameTextBox.Text))
+            if (TypeComboBox.SelectedItem != null && 
+                !string.IsNullOrWhiteSpace(VariableNameTextBox.Text) &&
+                !VariableList.Any(x =>
+                                  x.Key.Equals(VariableNameTextBox.Text)))
             {
-                Debug.WriteLine("Enter Create Variable");
-                string selectedType = TypeComboBox.SelectedItem.ToString().Split(' ')[1];
+                Debug.WriteLine("Enter Create Variable: ");
 
+                string selectedType = TypeComboBox.SelectedItem.
+                                      ToString().Split(' ')[1];
                 string variableName = VariableNameTextBox.Text;
 
-                
+                VariableList.Add(variableName, selectedType);
+
+                CurrentVariableTextBlock.Text += variableName + ": " +
+                    selectedType + "\n";
             }else
             {
-
+                Debug.WriteLine("Error");
             }
         }
 
         private void CreateClassButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(ClassNameTextBox.Text))
+            {
+                Debug.WriteLine("Receive Command to Make Dll Class...");
+                DllClassmaker.CreateDllFile(ClassNameTextBox.Text,
+                                            VariableList);
+            }
+            else
+            {
 
+            }
         }
     }
 }

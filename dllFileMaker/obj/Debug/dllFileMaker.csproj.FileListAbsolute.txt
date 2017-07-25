@@ -11,3 +11,4 @@ c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMake
 c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.csproj.GenerateResource.Cache
 c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.exe
 c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.pdb
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.csprojResolveAssemblyReference.cache
