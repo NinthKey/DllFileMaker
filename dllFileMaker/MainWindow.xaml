@@ -1,0 +1,32 @@
+﻿<Window x:Class="dllFileMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dllFileMaker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+
+    <Grid Background="#FF9FCBFF">
+        <Label x:Name="DllHeaderLabel" Content="Dll File Maker" HorizontalAlignment="Left" Height="40" Margin="25,10,0,0" VerticalAlignment="Top" Width="Auto"   FontSize="24" Foreground="Black" FontFamily="Century Gothic"/>
+        <Label x:Name="TypeLabel" FontSize="15" Content="Type" HorizontalAlignment="Left" Height="30" Margin="26,84,0,0" VerticalAlignment="Top" Width="70"/>
+        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Height="25" Margin="127,88,0,0" VerticalAlignment="Top" Width="125">
+            <ComboBoxItem>String</ComboBoxItem>
+            <ComboBoxItem>int</ComboBoxItem>
+            <ComboBoxItem>double</ComboBoxItem>
+            <ComboBoxItem>boolean</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="VariableNameLabel" Content="Name" HorizontalAlignment="Left" Margin="26,138,0,0" VerticalAlignment="Top" Width="70" FontSize="15"/>
+        <TextBox x:Name="VariableNameTextBox" HorizontalAlignment="Left" Height="25" Margin="127,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+        <Button x:Name="CreateButton" Background="#373737" Foreground="White"  Content="Create" HorizontalAlignment="Left" Margin="139,191,0,0" VerticalAlignment="Top" Width="100" Height="25" FontSize="15" Click="CreateButton_Click"/>
+
+        <ScrollViewer HorizontalAlignment="Left" Height="171" Margin="292,83,0,0" VerticalAlignment="Top" Width="188" BorderBrush="#FFF90B0B">
+            <TextBlock x:Name="CurrentVariableTextBlock" TextWrapping="Wrap" Background="#FFF9F9F9"/>
+        </ScrollViewer>
+
+        <Label x:Name="CurrentVariableLabel" Content="Current Variable" HorizontalAlignment="Left" Margin="292,53,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="CreateClassButton" Background="#373737" Foreground="White" Content="Create Class" HorizontalAlignment="Left" Margin="327,275,0,0" VerticalAlignment="Top" Width="110" Height="25" FontSize="15" Click="CreateClassButton_Click"/>
+        <Label x:Name="ClassNameLabel" FontSize="15" Content="Class Name" HorizontalAlignment="Left" Height="30" Margin="25,270,0,0" VerticalAlignment="Top" Width="Auto" RenderTransformOrigin="0.582,-1.059"/>
+        <TextBox x:Name="ClassNameTextBox" HorizontalAlignment="Left" Height="25" Margin="131,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125"/>
+    </Grid>
+</Window>

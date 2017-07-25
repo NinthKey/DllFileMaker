@@ -1,0 +1,13 @@
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\bin\Debug\dllFileMaker.exe.config
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\bin\Debug\dllFileMaker.exe
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\bin\Debug\dllFileMaker.pdb
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\MainWindow.g.cs
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\App.g.cs
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker_MarkupCompile.cache
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker_MarkupCompile.lref
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\MainWindow.baml
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.g.resources
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.Properties.Resources.resources
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.csproj.GenerateResource.Cache
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.exe
+c:\users\openisdm\documents\visual studio 2015\Projects\dllFileMaker\dllFileMaker\obj\Debug\dllFileMaker.pdb
