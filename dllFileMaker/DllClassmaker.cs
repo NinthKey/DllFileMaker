@@ -6,23 +6,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.CodeDom.Compiler;
 using Microsoft.CSharp;
+using System.Collections;
 
 namespace dllFileMaker
 {
     class DllClassmaker
     {
-        public static void CreateDllFile(string ClassName, Dictionary<string,string> typeNames)
+        public class VariableItem{
+
+            public string name;
+            public string type;
+            public string defaultValue;
+
+            public VariableItem(string name, string type, string defaultValue)
+            {
+                this.name = name;
+                this.type = type;
+                this.defaultValue = defaultValue;
+            }
+        }
+
+        public static void CreateDllFile(string ClassName, ArrayList list)
         {
             Debug.WriteLine("Entering Creating Dll File");
 
             string typeToString = "";
+            string variableConstructor = "";
             //Generating types
-            foreach(KeyValuePair<string,string> x in typeNames)
+            foreach(VariableItem x in list)
             {
-                typeToString += "   public " + x.Value + " " + x.Key +
+                typeToString += "   public " + x.type + " " + x.name +
                     " { get; set; }\n";
+
+                string value = x.defaultValue;
+                if (x.type.Equals("string"))
+                {
+                    value = "\"" + value + "\"";
+                }
+                variableConstructor += "    " + x.name + " = " + value +
+                    ";\n";
             }
 
+            string Constructor = "  public " + ClassName + " (){\n" +
+                variableConstructor +
+                "}";
 
             //Generating Dll
             var provider = new CSharpCodeProvider();
@@ -30,9 +57,11 @@ namespace dllFileMaker
             {
                 OutputAssembly = ClassName + "SOP.dll"
             };
-            string source =           
+            string source =
+            "using System;\n" +           
             "public class " + ClassName + " {\n" +
-                   typeToString +             
+                   typeToString +   
+                   Constructor +          
             "}";
             Debug.WriteLine(source);
 
