@@ -16,13 +16,17 @@ namespace dllFileMaker
 
             public string name;
             public string type;
+
+            public bool HasDefault;
             public string defaultValue;
 
-            public VariableItem(string name, string type, string defaultValue)
+            public VariableItem(string name, string type, string defaultValue, bool HasDefault)
             {
                 this.name = name;
                 this.type = type;
+                this.HasDefault = HasDefault;
                 this.defaultValue = defaultValue;
+                
             }
         }
 
@@ -38,13 +42,17 @@ namespace dllFileMaker
                 typeToString += "   public " + x.type + " " + x.name +
                     " { get; set; }\n";
 
-                string value = x.defaultValue;
-                if (x.type.Equals("string"))
+
+                if (x.HasDefault)
                 {
-                    value = "\"" + value + "\"";
+                    string value = x.defaultValue;
+                    if (x.type.Equals("string"))
+                    {
+                        value = "\"" + value + "\"";
+                    }
+                    variableConstructor += "      " + x.name + " = " + value +
+                        ";\n";
                 }
-                variableConstructor += "    " + x.name + " = " + value +
-                    ";\n";
             }
 
             string Constructor = "   public " + ClassName + " (){\n" +

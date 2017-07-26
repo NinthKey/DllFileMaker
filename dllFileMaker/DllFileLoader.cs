@@ -28,29 +28,31 @@ namespace dllFileMaker
             
         }
 
-        public static void loadDLLFile(string path)
+        public static ArrayList loadDLLFile(string path)
         {
-            
+
             Assemblies = Assembly.LoadFrom(path);
 
+            ArrayList List = new ArrayList();
 
             Type[] AllTypes = Assemblies.GetTypes();
 
-            ArrayList _Temp = new ArrayList();
-
             foreach (Type t in AllTypes)
             {
-                _Temp.Add(t.ToString());
+                List.Add(t.ToString());
                 Debug.WriteLine(t.ToString());
 
                 PropertyInfo[] properties = t.GetProperties();
-                Console.WriteLine((t.GetFields()).Count() + " " + t.GetFields()[0]);
+                
                 foreach(PropertyInfo x in properties)
                 {
-                    
+                    List.Add(x.Name + " " + x.PropertyType);
                     Debug.WriteLine(x.Name + " " + x.PropertyType );
                 }
             }
+
+
+            return List;
 
         }
 

@@ -49,12 +49,27 @@ namespace dllFileMaker
                                       ToString().Split(' ')[1];
                 string variableName = VariableNameTextBox.Text;
 
-                string defaultValue = DefaultValueTextBox.Text;
+                string defaultValue;
 
-                VariableList.Add(new VariableItem(variableName,selectedType,defaultValue));
+                bool HasDefault; 
+
+                if (string.IsNullOrWhiteSpace(DefaultValueTextBox.Text))
+                {
+                    defaultValue = null;
+                    HasDefault = false;
+                }
+                else
+                {
+                    defaultValue = DefaultValueTextBox.Text;
+                    HasDefault = true;
+                }
+
+                VariableList.Add(new VariableItem(variableName,selectedType,defaultValue, HasDefault));
 
                 CurrentVariable.Items.Add( selectedType + " " +
-                    variableName + " = " + defaultValue);      
+                    variableName + " = " + defaultValue);
+
+                CleanUpTextBox();
             }
             else
             {
@@ -73,7 +88,7 @@ namespace dllFileMaker
                 MessageBox.Show(messg, "Warning");
             }
 
-            CleanUpTextBox();
+            
         }
 
         private void CreateClassButton_Click(object sender, RoutedEventArgs e)
@@ -87,6 +102,9 @@ namespace dllFileMaker
                 CleanUpTextBox();
                 ClassNameTextBox.Text = "";
                 CurrentVariable.Items.Clear();
+                VariableList.Clear();
+
+                               
             }
             else
             {
@@ -166,6 +184,11 @@ namespace dllFileMaker
         {
             bool IsInputInvalid = false;
 
+            if (string.IsNullOrWhiteSpace(DefaultValueTextBox.Text))
+            {
+                return true;
+            }
+
             if (TypeComboBox.SelectedItem != null)
             {
                 string typeName = TypeComboBox.SelectedItem.ToString().Split(' ')[1];
@@ -200,6 +223,8 @@ namespace dllFileMaker
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.RestoreDirectory = true;
 
+            ArrayList returnList = null;
+
             if(dialog.ShowDialog() == true)
             {
                 if((stream = dialog.OpenFile()) != null)
@@ -207,11 +232,31 @@ namespace dllFileMaker
                     using (stream)
                     {
                         string path = dialog.FileName;
-                        DllFileLoader.loadDLLFile(path);
+                        returnList = DllFileLoader.loadDLLFile(path);
                     }
                 }
             }
-            
+
+            string className = (string)returnList[0];
+
+            ClassNameTextBox.Text = className;
+
+            for(int i = 1; i < returnList.Count; i++)
+            {
+                string[] temp = ((string)returnList[i]).Split(' ');
+
+                string name = temp[0];
+
+                string type = temp[1];
+
+                VariableItem newItem = new VariableItem(name,type,null,false);
+
+                VariableList.Add(newItem);
+
+                CurrentVariable.Items.Add(type + " " +
+                    name + " = ");
+            }
+
         }
     }
 }
