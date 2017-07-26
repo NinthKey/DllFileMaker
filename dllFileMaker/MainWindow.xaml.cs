@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +27,6 @@ namespace dllFileMaker
     {
         public ArrayList VariableList;
         
-        
-
         public MainWindow()
         {
             InitializeComponent();
@@ -36,10 +36,6 @@ namespace dllFileMaker
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-
-            // Check if the string name already exist and input type mataches
-            // input
-
             bool HasValidVariableName = CheckNameRepeatedInList();
             bool HasValidInput = CheckInputValid();
 
@@ -62,8 +58,6 @@ namespace dllFileMaker
             }
             else
             {
-                Debug.WriteLine("Error");
-
                 string messg = "";
 
                 if(!HasValidInput)
@@ -78,6 +72,7 @@ namespace dllFileMaker
                 messg += "Please check again!";
                 MessageBox.Show(messg, "Warning");
             }
+
             CleanUpTextBox();
         }
 
@@ -91,10 +86,11 @@ namespace dllFileMaker
 
                 CleanUpTextBox();
                 ClassNameTextBox.Text = "";
+                CurrentVariable.Items.Clear();
             }
             else
             {
-
+                MessageBox.Show("Please Enter the Class Name", "Warning");
             }
         }
 
@@ -198,6 +194,24 @@ namespace dllFileMaker
             return !IsInputInvalid;
         }
 
-       
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
+        {
+            Stream stream = null;
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.RestoreDirectory = true;
+
+            if(dialog.ShowDialog() == true)
+            {
+                if((stream = dialog.OpenFile()) != null)
+                {
+                    using (stream)
+                    {
+                        string path = dialog.FileName;
+                        DllFileLoader.loadDLLFile(path);
+                    }
+                }
+            }
+            
+        }
     }
 }

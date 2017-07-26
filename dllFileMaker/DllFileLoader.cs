@@ -25,26 +25,36 @@ namespace dllFileMaker
         {
             Debug.WriteLine("DllFileLoad Initialize");
             // Print all dll class and method
-            SOPClasses = LoadLibrary();
-            // Initialize SOP Record to designate class
-            RecordTargetClassName = "SOPFlood"; // Decide which class to load
-            SOPRecord = FindClass(RecordTargetClassName);
-
-            // Initialzie SOP to designated class
-            SOPTargetClassName = "SOP";
-            SOP = FindClass(SOPTargetClassName);
+            
         }
 
-        public static dynamic GetSOP()
+        public static void loadDLLFile(string path)
         {
-            return SOP;
+            
+            Assemblies = Assembly.LoadFrom(path);
+
+
+            Type[] AllTypes = Assemblies.GetTypes();
+
+            ArrayList _Temp = new ArrayList();
+
+            foreach (Type t in AllTypes)
+            {
+                _Temp.Add(t.ToString());
+                Debug.WriteLine(t.ToString());
+
+                PropertyInfo[] properties = t.GetProperties();
+                Console.WriteLine((t.GetFields()).Count() + " " + t.GetFields()[0]);
+                foreach(PropertyInfo x in properties)
+                {
+                    
+                    Debug.WriteLine(x.Name + " " + x.PropertyType );
+                }
+            }
+
         }
 
-        public static dynamic CreateAnInstance()
-        {
-            dynamic type = FindClass(RecordTargetClassName);
-            return type;
-        }
+        
 
         /// <summary>
         /// This function loads all the dll files in DEBUG folder and print 

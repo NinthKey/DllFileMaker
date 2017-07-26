@@ -47,7 +47,7 @@ namespace dllFileMaker
                     ";\n";
             }
 
-            string Constructor = "  public " + ClassName + " (){\n" +
+            string Constructor = "   public " + ClassName + " (){\n" +
                 variableConstructor +
                 "}";
 

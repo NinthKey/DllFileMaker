@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dllFileMaker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="490" Width="620">
+        Title="MainWindow" Height="490" Width="620" WindowStartupLocation="CenterScreen">
 
     <Grid Background="#FF9FCBFF">
         <Label x:Name="DllHeaderLabel" Content="Dll File Maker" HorizontalAlignment="Left" Height="40" Margin="32,19,0,0" VerticalAlignment="Top" Width="Auto"   FontSize="30" Foreground="Black" FontFamily="Century Gothic"/>
@@ -35,7 +35,7 @@
 
         <Button x:Name="CreateClassButton" Background="#373737" Foreground="White" Content="Create Class" HorizontalAlignment="Left" Margin="250,397,0,0" VerticalAlignment="Top" Width="122" Height="42" FontSize="15" Click="CreateClassButton_Click"/>
 
-        <Button x:Name="LoadButton" Background="#373737" Foreground="White" Content="Load" HorizontalAlignment="Left" Height="31" Margin="460,28,0,0" VerticalAlignment="Top" Width="92" FontSize="15"/>
+        <Button x:Name="LoadButton" Background="#373737" Foreground="White" Content="Load" HorizontalAlignment="Left" Height="31" Margin="460,28,0,0" VerticalAlignment="Top" Width="92" FontSize="15" Click="LoadButton_Click"/>
 
         <Image x:Name="image" Source="dllFileIcon.ico" HorizontalAlignment="Left" Height="49" Margin="236,16,0,0" VerticalAlignment="Top" Width="56"/>
 
